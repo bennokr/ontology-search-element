@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ontology search element demo</title>
+  <script type="module" src="./dist/ontology-search-element.js"></script>
+  <style>
+    body { max-width: 52rem; margin: 3rem auto; padding: 0 1rem; font: 16px/1.5 system-ui, sans-serif; }
+    output { display: block; margin-top: 1rem; padding: 1rem; white-space: pre-wrap; background: #f4f6f8; }
+  </style>
+</head>
+<body>
+  <h1>Ontology search element</h1>
+  <p>Search a provider and select a concept. The host receives a neutral concept record.</p>
+  <ontology-search label="population"></ontology-search>
+  <output>No concept selected yet.</output>
+  <script type="module">
+    const search = document.querySelector("ontology-search");
+    const output = document.querySelector("output");
+    search.addEventListener("ontology-select", (event) => {
+      output.textContent = JSON.stringify(event.detail, null, 2);
+    });
+  </script>
+</body>
+</html>
